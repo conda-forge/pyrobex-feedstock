@@ -1,5 +1,5 @@
 {% set name = "pyrobex" %}
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 
 package:
@@ -8,14 +8,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 99b51c3139dd0f9402d69fc1041882769f3d1bea210a9e6cebf25470c4f53632
+  sha256: 1ed5a927e9a2204151e11b20a3b723cbc930e7b337164a54c544a49cc0ab6830
 
 build:
   number: 0
   noarch: python
   entry_points:
     - robex=pyrobex.cli:main
-  script: 
+  script:
     - rm -rf ./pyrobex/ROBEX
     - {{ PYTHON }} -m pip install . -vv
 
