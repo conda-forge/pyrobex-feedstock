@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1ed5a927e9a2204151e11b20a3b723cbc930e7b337164a54c544a49cc0ab6830
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - robex=pyrobex.cli:main
@@ -22,11 +22,11 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - nibabel
     - numpy
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -36,6 +36,7 @@ test:
     - robex --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/jcreinhold/pyrobex
